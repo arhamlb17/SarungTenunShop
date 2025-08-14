@@ -110,37 +110,30 @@ footer {
 
 /* Responsive Layouts */
 @media (max-width: 768px) {
-    /* Stack the images in the banner */
     #banner .row {
         flex-direction: column;
     }
 
-    /* Adjust product card layout */
     .card {
         width: 100%;
         margin: 0 auto;
     }
 
-    /* Adjust the navbar for small screens */
     .navbar .navbar-nav {
         margin-top: 1rem;
     }
 }
 
 @media (max-width: 576px) {
-    /* Adjust card image height for smaller screens */
     .card img {
         height: 150px;
     }
 
-    /* Make product titles smaller */
     .card-title {
         font-size: 1rem;
     }
 
-    /* Adjust footer font size */
     footer {
         font-size: 0.9rem;
     }
 }
-
