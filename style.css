@@ -87,7 +87,7 @@ section h2 {
 }
 
 .btn-primary {
-    background-color: #17a2b8;
+    background-color: #048837;
     color: white;
     padding: 0.5rem 1rem;
     border: none;
@@ -96,12 +96,12 @@ section h2 {
 }
 
 .btn-primary:hover {
-    background-color: #138496;
+    background-color: #048837;
 }
 
 /* Footer */
 footer {
-    background-color: #17a2b8;
+    background-color: #048837;
     color: white;
     text-align: center;
     padding: 1rem 0;
