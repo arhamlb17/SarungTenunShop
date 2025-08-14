@@ -15,7 +15,7 @@ body {
 /* Navbar customization */
 .navbar {
     padding: 1rem;
-    background-color: #048837;
+    background-color: #007bff;
 }
 
 .navbar a.navbar-brand {
@@ -87,7 +87,7 @@ section h2 {
 }
 
 .btn-primary {
-    background-color: #048837;
+    background-color: #007bff;
     color: white;
     padding: 0.5rem 1rem;
     border: none;
@@ -96,12 +96,12 @@ section h2 {
 }
 
 .btn-primary:hover {
-    background-color: #048837;
+    background-color: #006fe6;
 }
 
 /* Footer */
 footer {
-    background-color: #048837;
+    background-color: #007bff;
     color: white;
     text-align: center;
     padding: 1rem 0;
