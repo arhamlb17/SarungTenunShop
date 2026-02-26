@@ -2,43 +2,679 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Tentang Kami</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - Sarung Nusantara</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS - Konsisten dengan halaman sebelumnya */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #2c3e50;
+            background-color: #fcf9f4;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+        }
+
+        .navbar {
+            background-color: #fff8f0 !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #8B4513 !important;
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-brand i {
+            color: #D4AF37;
+            margin-right: 8px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: #5a4e3e !important;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #8B4513 !important;
+        }
+
+        .btn-primary {
+            background-color: #8B4513;
+            border-color: #8B4513;
+            font-weight: 500;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #5a2e0c;
+            border-color: #5a2e0c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(139, 69, 19, 0.3);
+        }
+
+        .btn-outline-primary {
+            color: #8B4513;
+            border-color: #8B4513;
+            border-radius: 40px;
+            padding: 0.6rem 1.5rem;
+            font-weight: 500;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #8B4513;
+            border-color: #8B4513;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #fcf9f4 0%, #f5ebd8 100%);
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            color: #8B4513;
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb {
+            background: transparent;
+            justify-content: center;
+        }
+
+        .breadcrumb-item a {
+            color: #5a4e3e;
+            text-decoration: none;
+        }
+
+        .breadcrumb-item.active {
+            color: #D4AF37;
+        }
+
+        /* About Section */
+        .about-section {
+            margin-bottom: 5rem;
+        }
+
+        .about-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-content {
+            padding: 2rem;
+        }
+
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
+            color: #8B4513;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .about-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: #D4AF37;
+        }
+
+        .about-content p {
+            color: #5a4e3e;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Values Section */
+        .values-section {
+            background: white;
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #8B4513;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #D4AF37;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+            height: 100%;
+        }
+
+        .value-card:hover {
+            background: #fff8f0;
+            transform: translateY(-10px);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: #D4AF37;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+        }
+
+        .value-card h3 {
+            color: #8B4513;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .value-card p {
+            color: #7f8c8d;
+            margin-bottom: 0;
+        }
+
+        /* Team Section */
+        .team-section {
+            margin-bottom: 5rem;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            height: 100%;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.15);
+        }
+
+        .team-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .team-card:hover .team-image img {
+            transform: scale(1.05);
+        }
+
+        .team-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .team-info h3 {
+            color: #8B4513;
+            margin-bottom: 0.3rem;
+            font-size: 1.2rem;
+        }
+
+        .team-info p {
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .team-social a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background: #f5ebd8;
+            color: #8B4513;
+            border-radius: 50%;
+            line-height: 35px;
+            margin: 0 0.2rem;
+            transition: all 0.3s;
+        }
+
+        .team-social a:hover {
+            background: #8B4513;
+            color: white;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: #8B4513;
+            color: white;
+            padding: 4rem 0;
+            border-radius: 30px;
+            margin-bottom: 5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #D4AF37;
+        }
+
+        footer h5 {
+            color: #D4AF37 !important;
+            margin-bottom: 1.5rem;
+        }
+
+        footer .social-icons a {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            transition: background-color 0.3s;
+        }
+
+        footer .social-icons a:hover {
+            background-color: #D4AF37;
+            color: #2c3e50 !important;
+        }
+
+        hr {
+            opacity: 0.2;
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
-     <nav class="navbar navbar-expand-lg">
-    <div class="container">
-        <a class="navbar-brand" href="index.html">Tentang Kami</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
-                <li class="nav-item"><a class="nav-link" href="produk.html">Produk</a></li>
-                <li class="nav-item"><a class="nav-link" href="tentang.html">Tentang</a></li>
-                <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
-            </ul>
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-shop"></i> Sarung Nusantara
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="produk.html">Produk</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="tentang.html">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-outline-primary" href="#">
+                            <i class="bi bi-cart"></i> Keranjang 
+                            <span class="badge bg-primary text-white ms-1">3</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-    <!-- Paste navbar di sini -->
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold">Tentang Sarung Nusantara</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Beranda</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Tentang Kami</li>
+                </ol>
+            </nav>
+            <p class="lead text-muted">Melestarikan warisan budaya Indonesia melalui sarung berkualitas</p>
+        </div>
+    </section>
 
-    <div class="container py-5">
-        <h1>Tentang Kami</h1>
-        <p>Kami adalah toko yang berkomitmen memberikan produk terbaik untuk Anda.</p>
-    </div>
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="about-image">
+                        <img src="https://via.placeholder.com/600x400/8B4513/ffffff?text=Pengrajin+Sarung" alt="Pengrajin Sarung">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-content">
+                        <h2>Cerita Kami</h2>
+                        <p>Sarung Nusantara lahir dari kecintaan yang mendalam terhadap warisan budaya Indonesia. Kami percaya bahwa sarung bukan sekadar pakaian, tetapi juga simbol identitas, kebanggaan, dan keahlian tradisional yang telah diwariskan turun-temurun.</p>
+                        <p>Didirikan pada tahun 2020, kami memulai perjalanan dengan misi sederhana: memperkenalkan keindahan dan kualitas sarung dari berbagai daerah di Indonesia kepada dunia. Kami bekerja sama langsung dengan pengrajin lokal dari Pekalongan, Solo, Madura, Lombok, dan berbagai daerah lainnya untuk memastikan setiap produk yang kami jual adalah karya asli dengan kualitas terbaik.</p>
+                        <p>Setiap sarung yang kami jual memiliki cerita tersendiri. Mulai dari proses pemilihan bahan, pewarnaan alami, hingga proses penenunan yang dilakukan dengan penuh kesabaran dan ketelitian. Kami bangga bisa menjadi bagian dari upaya melestarikan warisan budaya ini.</p>
+                        <div class="mt-4">
+                            <a href="produk.html" class="btn btn-primary me-2">
+                                <i class="bi bi-bag"></i> Lihat Koleksi
+                            </a>
+                            <a href="kontak.html" class="btn btn-outline-primary">
+                                <i class="bi bi-envelope"></i> Hubungi Kami
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title">Nilai-Nilai Kami</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="bi bi-hand-thumbs-up"></i>
+                        </div>
+                        <h3>Kualitas Terbaik</h3>
+                        <p>Kami hanya memilih bahan-bahan terbaik dan bekerja dengan pengrajin paling berpengalaman untuk menghasilkan sarung berkualitas premium.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="bi bi-tree"></i>
+                        </div>
+                        <h3>Ramah Lingkungan</h3>
+                        <p>Kami mendorong penggunaan pewarna alami dan proses produksi yang ramah lingkungan untuk menjaga kelestarian alam.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <h3>Memberdayakan Pengrajin</h3>
+                        <p>Kami berkomitmen untuk memberdayakan pengrajin lokal dengan memberikan upah yang adil dan membantu melestarikan keahlian tradisional.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="bi bi-heart"></i>
+                        </div>
+                        <h3>Cinta Budaya</h3>
+                        <p>Kami mencintai budaya Indonesia dan berusaha memperkenalkannya kepada generasi muda melalui produk-produk berkualitas.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h3>Keaslian Terjamin</h3>
+                        <p>Setiap produk yang kami jual dijamin keasliannya dan berasal langsung dari pengrajin asli di daerahnya masing-masing.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="bi bi-star"></i>
+                        </div>
+                        <h3>Kepuasan Pelanggan</h3>
+                        <p>Kepuasan pelanggan adalah prioritas utama kami. Kami selalu berusaha memberikan pelayanan terbaik.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6 mb-4 mb-md-0">
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Pengrajin Lokal</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4 mb-md-0">
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Daerah Asal</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">5000+</div>
+                        <div class="stat-label">Produk Terjual</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Kepuasan</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">Tim Kami</h2>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://via.placeholder.com/300x300/8B4513/ffffff?text=Founder" alt="Founder">
+                        </div>
+                        <div class="team-info">
+                            <h3>Budi Santoso</h3>
+                            <p>Founder & CEO</p>
+                            <div class="team-social">
+                                <a href="#"><i class="bi bi-facebook"></i></a>
+                                <a href="#"><i class="bi bi-instagram"></i></a>
+                                <a href="#"><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://via.placeholder.com/300x300/8B4513/ffffff?text=Creative" alt="Creative Director">
+                        </div>
+                        <div class="team-info">
+                            <h3>Dewi Lestari</h3>
+                            <p>Creative Director</p>
+                            <div class="team-social">
+                                <a href="#"><i class="bi bi-facebook"></i></a>
+                                <a href="#"><i class="bi bi-instagram"></i></a>
+                                <a href="#"><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://via.placeholder.com/300x300/8B4513/ffffff?text=Production" alt="Production Manager">
+                        </div>
+                        <div class="team-info">
+                            <h3>Ahmad Fauzi</h3>
+                            <p>Production Manager</p>
+                            <div class="team-social">
+                                <a href="#"><i class="bi bi-facebook"></i></a>
+                                <a href="#"><i class="bi bi-instagram"></i></a>
+                                <a href="#"><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://via.placeholder.com/300x300/8B4513/ffffff?text=Marketing" alt="Marketing">
+                        </div>
+                        <div class="team-info">
+                            <h3>Siti Aminah</h3>
+                            <p>Marketing Manager</p>
+                            <div class="team-social">
+                                <a href="#"><i class="bi bi-facebook"></i></a>
+                                <a href="#"><i class="bi bi-instagram"></i></a>
+                                <a href="#"><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Toko Kami. Semua hak dilindungi.</p>
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5>Sarung Nusantara</h5>
+                    <p>Kami berkomitmen untuk melestarikan warisan budaya Indonesia melalui sarung berkualitas tinggi yang dibuat oleh pengrajin terbaik.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#" class="me-2"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="me-2"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="me-2"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class=""><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5>Tautan Cepat</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html">Beranda</a></li>
+                        <li class="mb-2"><a href="produk.html">Produk</a></li>
+                        <li class="mb-2"><a href="tentang.html">Tentang Kami</a></li>
+                        <li class="mb-2"><a href="kontak.html">Kontak</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5>Kontak Kami</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> Jl. Pekalongan No. 123, Jakarta</li>
+                        <li class="mb-2"><i class="bi bi-telephone me-2"></i> (021) 1234-5678</li>
+                        <li class="mb-2"><i class="bi bi-envelope me-2"></i> info@sarungnusantara.com</li>
+                        <li><i class="bi bi-clock me-2"></i> Buka: 09:00 - 17:00 WIB</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-12">
+                    <h5>Newsletter</h5>
+                    <p>Dapatkan promo terbaru dan koleksi eksklusif.</p>
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Email Anda" style="border-radius: 40px 0 0 40px;">
+                        <button class="btn btn-primary" type="button" style="border-radius: 0 40px 40px 0;">
+                            <i class="bi bi-send"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 Sarung Nusantara. Semua hak dilindungi.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Dibuat dengan <i class="bi bi-heart-fill text-danger"></i> oleh pengrajin Indonesia</p>
+                </div>
+            </div>
+        </div>
     </footer>
 
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
